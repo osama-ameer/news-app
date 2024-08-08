@@ -5,11 +5,6 @@ import Home from "../pages/Home";
 export const routes = [
   {
     path: "/",
-    key: "",
-    element: <Home />,
-  },
-  {
-    path: "/articles",
     key: "articles",
     element: <Articles />,
   },

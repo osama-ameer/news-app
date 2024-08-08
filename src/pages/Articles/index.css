@@ -3,3 +3,15 @@
   /* justify-content: center; */
   align-items: center;
 }
+
+.prefrences {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pref-filters {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

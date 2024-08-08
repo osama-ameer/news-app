@@ -1,36 +1,23 @@
-import React, { Fragment, useEffect, useState } from "react";
-import { NEWS_API_API_KEY } from "../../utils/constants";
+import React, { Fragment } from "react";
 import { Row, Col, Spin } from "antd";
-import axios from "axios";
 import ArticleCard from "../../components/Articles/ArticleCard";
 import "./index.css";
+import useArticle from "../../context/ArticleContext";
+import EmptyComponent from "../../components/UI/EmptyComponent";
+
 const Articles = () => {
-  const [articles, setArticles] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getNews = async () => {
-    setLoading(true);
-    try {
-      let NEWS_API = `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${NEWS_API_API_KEY}`;
-
-      let res = await axios.get(NEWS_API);
-      let data = res?.data;
-      setArticles(data?.articles);
-    } catch (error) {
-      console.log("Err", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getNews();
-  }, []);
+  const { filters, articles, loading } = useArticle();
 
   return (
     <Fragment>
-      <h2>Articles</h2>
-      <Spin spinning={loading}>
+      <div className="prefrences">
+        <h2>Select your prefrences</h2>
+        <div className="pref-filters">
+          
+        </div>
+      </div>
+      <h2>Articles for {filters?.query !== "" && `'${filters?.query}'...`}</h2>
+      <Spin spinning={loading} className="spinner">
         <Row gutter={[16, 16]}>
           {articles?.map((article, index) => (
             <Col
@@ -42,10 +29,11 @@ const Articles = () => {
               xl={6}
               className="card_wrapper_col"
             >
-              <ArticleCard article={article} />
+              <ArticleCard article={article} index={index} />
             </Col>
           ))}
         </Row>
+        {articles?.length === 0 && <EmptyComponent />}
       </Spin>
     </Fragment>
   );

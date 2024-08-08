@@ -1,1 +1,16 @@
+// NEWS API
 export const NEWS_API_API_KEY = "c23bfec1884f45c2a2cd074f3ff78fad";
+
+// GUARDIAN API
+export const GUARDIAN_API_KEY = "63583742-82b0-433a-bb77-d4a4428dcf96";
+
+// NEW YORK TIMES API CRED
+export const NY_TIMES_API_KEY = "XjNBTDcGuWrCcUNdX8UJhGmDDAupXlD8";
+export const NY_TIMES_SECRET = "CyDvuKjuVbsQDUl0";
+export const NY_TIMES_APP_ID = "edf12a6c-5292-439e-b77b-cb858df07e46";
+
+export const API_SOURCES = {
+  NEWS_API: "NEWS_API",
+  GUARDIAN_API: "GUARDIAN_API",
+  NEW_YORK_TIME_API: "NEW_YORK_TIME_API",
+};
