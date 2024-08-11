@@ -1,9 +1,10 @@
 import React from "react";
 import { Card } from "antd";
-import "./index.css";
 import { useNavigate } from "react-router-dom";
 import useArticle from "../../../context/ArticleContext";
 import placeholder_image from "../../../assets/images/placeholder_image.jpg";
+import dayjs from "dayjs";
+import "./index.css";
 
 const { Meta } = Card;
 
@@ -13,7 +14,7 @@ const ArticleCard = ({ article, index }) => {
 
   return (
     <Card
-      onClick={(e) => navigate(`/article/${index}`, { state: article })}
+      onClick={(e) => window.open(article.url, "_blank")}
       className="fixed-size-card"
       hoverable
       loading={loading}
@@ -28,9 +29,16 @@ const ArticleCard = ({ article, index }) => {
       <Meta
         title={<div className="two-line-title">{article?.article_title}</div>}
         description={
-          <div className="three-line-description">
-            {article?.article_description}
-          </div>
+          <>
+            <p className="details m-0">{article?.author_name}</p>
+            <p className="details">
+              {dayjs(article?.publishedDate).format("DD, MMM, YYYY")}
+            </p>
+
+            <div className="three-line-description">
+              {article?.article_description}
+            </div>
+          </>
         }
         className="meta-content"
       />

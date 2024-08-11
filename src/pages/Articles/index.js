@@ -4,19 +4,24 @@ import ArticleCard from "../../components/Articles/ArticleCard";
 import "./index.css";
 import useArticle from "../../context/ArticleContext";
 import EmptyComponent from "../../components/UI/EmptyComponent";
+import UserPrefrences from "../../components/UserPrefrences";
+import CustomFilters from "../../components/CustomFilters";
 
 const Articles = () => {
   const { filters, articles, loading } = useArticle();
 
   return (
     <Fragment>
-      <div className="prefrences">
-        <h2>Select your prefrences</h2>
-        <div className="pref-filters">
-          
+      <div className="sticky">
+        <UserPrefrences />
+
+        <div className="justify-between">
+          <h2>
+            Articles for {filters?.query !== "" && `'${filters?.query}'...`}
+          </h2>
+          <CustomFilters />
         </div>
       </div>
-      <h2>Articles for {filters?.query !== "" && `'${filters?.query}'...`}</h2>
       <Spin spinning={loading} className="spinner">
         <Row gutter={[16, 16]}>
           {articles?.map((article, index) => (

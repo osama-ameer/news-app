@@ -4,14 +4,33 @@
   align-items: center;
 }
 
-.prefrences {
+.align-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heading-col {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.justify-between {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.pref-filters {
+.flex-start {
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
+}
+
+.sticky {
+  position: sticky;
+  background: white;
+  top: 0;
+  z-index: 99;
 }

@@ -8,15 +8,48 @@
 .demo-logo {
   color: white;
   white-space: nowrap;
+  font-size: 22px;
 }
 .app-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* padding: 0 !important; */
 }
 
 .search-bar {
   margin: 0 16px;
   max-width: 550px;
-  width: 400px;
+  width: 500px;
+}
+
+.align-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.menu-items {
+  display: flex;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .menu-items {
+    display: none !important;
+  }
+
+  .app-header {
+    padding: 0 16px !important;
+  }
+
+  .demo-logo {
+    color: white;
+    white-space: nowrap;
+    font-size: 16px;
+  }
 }
