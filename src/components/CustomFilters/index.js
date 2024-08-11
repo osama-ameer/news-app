@@ -1,13 +1,16 @@
-import { DatePicker, Col, Input, Popover, Row, Select } from "antd";
+import { DatePicker, Col, Input, Popover, Row, Select, Button } from "antd";
 import React from "react";
 import { API_SOURCES } from "../../utils/constants";
 import useArticle from "../../context/ArticleContext";
 import dayjs from "dayjs";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { DownloadOutlined, FilterOutlined } from "@ant-design/icons";
 
 const { RangePicker } = DatePicker;
 
 const CustomFilters = () => {
   const { filters, handleChangeFilter, userPrefrences } = useArticle();
+  const windowSize = useWindowSize();
 
   const categoriesOptions = userPrefrences?.categories?.map((item) => {
     return {
@@ -58,15 +61,15 @@ const CustomFilters = () => {
   );
   return (
     <Popover
-      placement="bottom"
+      placement={windowSize <= 768 ? "bottom" : "bottomLeft"}
       title="Apply Filters"
       content={content}
       trigger="click"
       style={{}}
     >
-      <span style={{ cursor: "pointer", fontSize: 16, fontWeight: "bold" }}>
+      <Button type="primary" icon={<FilterOutlined />}>
         Filters
-      </span>
+      </Button>
     </Popover>
   );
 };

@@ -15,7 +15,7 @@ const ArticleCard = ({ article, index }) => {
   return (
     <Card
       onClick={(e) => window.open(article.url, "_blank")}
-      className="fixed-size-card"
+      className="article-card"
       hoverable
       loading={loading}
       cover={
